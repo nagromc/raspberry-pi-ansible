@@ -1,0 +1,38 @@
+---
+- name: Make Debian act like a Raspberry Pi
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure packages are installed
+      # make it discoverable by name
+      package:
+        name: avahi-daemon
+
+    - name: Ensure SSHd password authentication is enabled
+      become: true
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^PasswordAuthentication"
+        line: PasswordAuthentication yes
+      notify: Restart sshd
+
+    # - name: Ensure SSHd public key authentication is disabled
+    #   become: true
+    #   lineinfile:
+    #     path: /etc/ssh/sshd_config
+    #     regexp: "^PubkeyAuthentication"
+    #     line: PubkeyAuthentication no
+    #   notify: Restart sshd
+
+    - name: Ensure `pi` user is created
+      user:
+        name: pi
+        groups: sudo
+        password: "{{ 'raspberry' | password_hash('sha512') }}"
+        shell: /bin/bash
+
+  handlers:
+    - name: Restart sshd
+      service:
+        name: sshd
+        state: restarted

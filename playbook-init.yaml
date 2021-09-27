@@ -1,0 +1,29 @@
+---
+- name: Ensure Raspberry Pi has minimal configuration to execute Ansible playbooks with regular user
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure `morgan` user exists
+      user:
+        name: morgan
+        password: "{{ 'morgan' | password_hash('sha512') }}"
+        groups: sudo
+        shell: /bin/bash
+
+    - name: Ensure `morgan` has an SSH authorized key
+      ansible.posix.authorized_key:
+        user: morgan
+        key: https://raw.githubusercontent.com/nagromc/dotfiles/main/private_dot_ssh/authorized_keys
+
+    - name: Ensure `sshd` default port is changed
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^Port"
+        line: Port 4222
+      notify: Restart sshd
+
+  handlers:
+    - name: Restart sshd
+      service:
+        name: sshd
+        state: restarted
