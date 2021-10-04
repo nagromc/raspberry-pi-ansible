@@ -23,50 +23,23 @@
         line: PasswordAuthentication no
       notify: Restart sshd
 
+    - name: Ensure packages are installed
+      package:
+        name: docker.io, fail2ban
+      notify: Reboot system
+
+    - name: Ensure `morgan` user has group `docker`
+      user:
+        name: morgan
+        groups: docker
+        append: yes
+
     - name: Ensure system is up-to-date
       apt:
         upgrade: yes
         update_cache: yes
         cache_valid_time: 86400 # one day
-      notify: Reboot the system
-
-    - name: Flush handlers to reboot the system
-      meta: flush_handlers
-
-    - name: Ensure `fail2ban` is installed
-      package:
-        name: fail2ban
-
-    # - name: Ensure `containerd.io` is installed
-    #   apt:
-    #     deb: https://download.docker.com/linux/debian/dists/buster/pool/stable/armhf/containerd.io_1.4.9-1_armhf.deb
-    #     # deb: https://download.docker.com/linux/debian/dists/buster/pool/stable/amd64/containerd.io_1.4.9-1_amd64.deb
-
-    # - name: Ensure `docker-ce-cli` is installed
-    #   apt:
-    #     deb: https://download.docker.com/linux/debian/dists/buster/pool/stable/armhf/docker-ce-cli_20.10.8~3-0~debian-buster_armhf.deb
-    #     # deb: https://download.docker.com/linux/debian/dists/buster/pool/stable/amd64/docker-ce-cli_20.10.8~3-0~debian-buster_amd64.deb
-
-    # - name: Ensure `docker-ce` is installed
-    #   apt:
-    #     deb: https://download.docker.com/linux/debian/dists/buster/pool/stable/armhf/docker-ce_20.10.8~3-0~debian-buster_armhf.deb
-    #     # deb: https://download.docker.com/linux/debian/dists/buster/pool/stable/amd64/docker-ce_20.10.8~3-0~debian-buster_amd64.deb
-
-    # - name: Ensure `docker` service starts on boot
-    #   systemd:
-    #     name: docker.service
-    #     enabled: yes
-
-    # - name: Ensure `containerd` service starts on boot
-    #   systemd:
-    #     name: containerd.service
-    #     enabled: yes
-
-    # - name: Ensure `morgan` user has group `docker`
-    #   user:
-    #     name: morgan
-    #     groups: docker
-    #     append: yes
+      notify: Reboot system
 
   handlers:
     - name: Restart sshd
@@ -74,5 +47,5 @@
         name: sshd
         state: restarted
 
-    - name: Reboot the system
+    - name: Reboot system
       reboot:
