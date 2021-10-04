@@ -1,0 +1,7 @@
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+PermitRootLogin no
+Port 4222
+PubkeyAuthentication yes
+Subsystem sftp /usr/lib/openssh/sftp-server
+UsePAM no
