@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "debian/buster64"
+  config.vm.box = "debian/bookworm64"
   config.vm.hostname = "raspi-vbox.local"
   config.vm.provider :virtualbox do |vb|
     vb.name = "raspberrypi-dev"
