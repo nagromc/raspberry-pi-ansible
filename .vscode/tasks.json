@@ -8,10 +8,20 @@
       "type": "shell",
       "command": "vagrant up",
       "group": {
-        "kind": "build",
-        "isDefault": true
+        "kind": "build"
       },
       "presentation":{
+        "focus": true,
+      }
+    },
+    {
+      "label": "vagrant destroy",
+      "type": "shell",
+      "command": "vagrant destroy --force",
+      "group": {
+        "kind": "build"
+      },
+      "presentation": {
         "focus": true,
       }
     }
