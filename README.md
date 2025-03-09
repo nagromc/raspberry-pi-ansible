@@ -18,13 +18,13 @@
 First playbook deployment:
 
 ```
-$ ansible-playbook -i dev-inventory --extra-vars "@vars-init.json" playbook-init.yaml
+$ ansible-playbook --inventory dev-inventory --extra-vars "@vars-init.json" playbook-init.yaml
 ```
 
 Following playbook deployments:
 
 ```
-$ ansible-playbook -i dev-inventory --ask-become-pass playbook.yaml
+$ ansible-playbook --inventory dev-inventory --ask-become-pass playbook.yaml
 ```
 
 
@@ -44,11 +44,11 @@ $ touch /Volumes/boot/ssh
 First playbook deployment:
 
 ```
-$ ansible-playbook -i prod-inventory --extra-vars "@vars-init.json" playbook-init.yaml
+$ ansible-playbook --inventory prod-inventory --extra-vars "@vars-init.json" playbook-init.yaml
 ```
 
 Following playbook deployments:
 
 ```
-$ ansible-playbook -i prod-inventory --ask-become-pass playbook.yaml
+$ ansible-playbook --inventory prod-inventory --ask-become-pass playbook.yaml
 ```
