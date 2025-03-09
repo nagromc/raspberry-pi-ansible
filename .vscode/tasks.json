@@ -24,6 +24,28 @@
       "presentation": {
         "focus": true,
       }
+    },
+    {
+      "label": "vagrant snapshot restore fresh-install",
+      "type": "shell",
+      "command": "vagrant snapshot restore fresh-install",
+      "group": {
+        "kind": "build"
+      },
+      "presentation": {
+        "focus": true,
+      }
+    },
+    {
+      "label": "ssh-keygen -R raspi-vbox.local",
+      "type": "shell",
+      "command": "ssh-keygen -R raspi-vbox.local",
+      "group": {
+        "kind": "build"
+      },
+      "presentation": {
+        "focus": true,
+      }
     }
   ]
 }
