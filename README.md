@@ -10,8 +10,9 @@
 
 ### Initializing a minimal environment
 
-1. Add `raspi-vbox.local` to your `/etc/ansible/hosts` file.
-2. Run `vagrant up`
+```shell
+$ vagrant up
+```
 
 ### Deploying a playbook
 
