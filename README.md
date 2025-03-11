@@ -33,10 +33,10 @@ $ ansible-playbook --inventory dev-inventory --ask-become-pass playbook.yaml
 
 ### Initializing a minimal environment
 
-Create an empty `ssh` file
+Copy the content of the `bootfs/` directory to the Raspberry Pi's first partition named `bootfs`:
 
 ```
-$ touch /Volumes/boot/ssh
+$ cp bootfs/* /Volumes/boot/
 ```
 
 

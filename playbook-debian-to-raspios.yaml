@@ -28,11 +28,18 @@
     #     line: PubkeyAuthentication no
     #   notify: Restart sshd
 
-    - name: Ensure `pi` user is created
+    - name: Ensure `pi` user is created (default user)
       user:
         name: pi
         groups: sudo
         password: "{{ 'raspberry' | password_hash('sha512') }}"
+        shell: /bin/bash
+
+    - name: Ensure `morgan` user is created (because of `userconf.txt`)
+      user:
+        name: morgan
+        groups: sudo
+        password: "{{ 'morgan' | password_hash('sha512') }}"
         shell: /bin/bash
 
   handlers:
