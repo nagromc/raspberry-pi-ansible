@@ -11,21 +11,21 @@
 ### Initializing a minimal environment
 
 ```shell
-$ vagrant up
+vagrant up
 ```
 
 ### Deploying a playbook
 
 First playbook deployment:
 
-```
-$ ansible-playbook --inventory inventory/dev --extra-vars "@vars-init.json" playbook-init.yaml
+```shell
+ansible-playbook --inventory inventory/dev --extra-vars "@vars-init.json" playbook-init.yaml
 ```
 
 Following playbook deployments:
 
-```
-$ ansible-playbook --inventory inventory/dev --ask-become-pass playbook.yaml
+```shell
+ansible-playbook --inventory inventory/dev --ask-become-pass playbook.yaml
 ```
 
 
@@ -35,8 +35,8 @@ $ ansible-playbook --inventory inventory/dev --ask-become-pass playbook.yaml
 
 Copy the content of the `bootfs/` directory to the Raspberry Pi's first partition named `bootfs`:
 
-```
-$ cp bootfs/* /Volumes/boot/
+```shell
+cp bootfs/* /Volumes/boot/
 ```
 
 
@@ -44,12 +44,12 @@ $ cp bootfs/* /Volumes/boot/
 
 First playbook deployment:
 
-```
-$ ansible-playbook --inventory inventory/prod --extra-vars "@vars-init.json" playbook-init.yaml
+```shell
+ansible-playbook --inventory inventory/prod --extra-vars "@vars-init.json" playbook-init.yaml
 ```
 
 Following playbook deployments:
 
-```
-$ ansible-playbook --inventory inventory/prod --ask-become-pass playbook.yaml
+```shell
+ansible-playbook --inventory inventory/prod --ask-become-pass playbook.yaml
 ```
