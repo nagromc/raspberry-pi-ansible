@@ -19,13 +19,13 @@ $ vagrant up
 First playbook deployment:
 
 ```
-$ ansible-playbook --inventory dev-inventory --extra-vars "@vars-init.json" playbook-init.yaml
+$ ansible-playbook --inventory inventory/dev --extra-vars "@vars-init.json" playbook-init.yaml
 ```
 
 Following playbook deployments:
 
 ```
-$ ansible-playbook --inventory dev-inventory --ask-become-pass playbook.yaml
+$ ansible-playbook --inventory inventory/dev --ask-become-pass playbook.yaml
 ```
 
 
@@ -45,11 +45,11 @@ $ cp bootfs/* /Volumes/boot/
 First playbook deployment:
 
 ```
-$ ansible-playbook --inventory prod-inventory --extra-vars "@vars-init.json" playbook-init.yaml
+$ ansible-playbook --inventory inventory/prod --extra-vars "@vars-init.json" playbook-init.yaml
 ```
 
 Following playbook deployments:
 
 ```
-$ ansible-playbook --inventory prod-inventory --ask-become-pass playbook.yaml
+$ ansible-playbook --inventory inventory/prod --ask-become-pass playbook.yaml
 ```
