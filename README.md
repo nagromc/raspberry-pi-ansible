@@ -19,7 +19,7 @@ vagrant up
 First playbook deployment:
 
 ```shell
-ansible-playbook --inventory inventory/dev --extra-vars "@vars-init.json" playbook-init.yaml
+ansible-playbook --inventory inventory/dev --extra-vars "@init-overrides.json" playbook-init.yaml
 ```
 
 Following playbook deployments:
@@ -45,7 +45,7 @@ cp bootfs/* /Volumes/boot/
 First playbook deployment:
 
 ```shell
-ansible-playbook --inventory inventory/prod --extra-vars "@vars-init.json" playbook-init.yaml
+ansible-playbook --inventory inventory/prod --extra-vars "@init-overrides.json" playbook-init.yaml
 ```
 
 Following playbook deployments:
