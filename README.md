@@ -36,7 +36,7 @@ ansible-playbook --inventory inventory/dev --ask-become-pass playbook.yaml
 Copy the content of the `bootfs/` directory to the Raspberry Pi's first partition named `bootfs`:
 
 ```shell
-cp bootfs/* /Volumes/boot/
+cp bootfs/* /Volumes/bootfs/
 ```
 
 
