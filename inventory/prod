@@ -1,1 +1,1 @@
-raspberrypi.local ansible_port=4222
+raspberrypi.lan ansible_port=4222
