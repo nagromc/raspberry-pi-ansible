@@ -8,6 +8,11 @@
         name: pi
         state: absent
 
+    - name: Ensure `morgan` user has up-to-date SSH keys
+      authorized_key:
+        user: morgan
+        key: https://raw.githubusercontent.com/nagromc/dotfiles/refs/heads/main/private_dot_ssh/authorized_keys
+
     - name: Ensure `sshd` is secured
       copy:
         src: files/etc/ssh/sshd_config.d/sshd.conf
