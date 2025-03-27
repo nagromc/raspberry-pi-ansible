@@ -17,7 +17,7 @@ vagrant up
 Run the following command:
 
 ```shell
-ansible-playbook --inventory inventory/dev --ask-become-pass playbook.yaml
+ansible-playbook --inventory inventory/dev playbook.yaml
 ```
 
 
@@ -26,5 +26,5 @@ ansible-playbook --inventory inventory/dev --ask-become-pass playbook.yaml
 Following playbook deployments:
 
 ```shell
-ansible-playbook --inventory inventory/prod --ask-become-pass playbook.yaml
+ansible-playbook --inventory inventory/prod playbook.yaml
 ```
