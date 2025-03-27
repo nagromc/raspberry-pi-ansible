@@ -6,7 +6,7 @@
     - name: Ensure `pi` user is disabled
       user:
         name: pi
-        expires: 0
+        state: absent
 
     - name: Ensure `sshd` is secured
       copy:
