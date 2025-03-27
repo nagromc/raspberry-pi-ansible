@@ -10,8 +10,8 @@
 
     - name: Ensure `sshd` is secured
       copy:
-        src: files/etc/ssh/sshd_config
-        dest: /etc/ssh/sshd_config
+        src: files/etc/ssh/sshd_config.d/sshd.conf
+        dest: /etc/ssh/sshd_config.d/sshd.conf
         owner: root
         group: root
         mode: 0600
