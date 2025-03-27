@@ -19,7 +19,7 @@
 
     - name: Ensure packages are installed
       package:
-        name: docker.io, fail2ban
+        name: docker.io
       notify: Reboot system
 
     - name: Ensure `morgan` user has group `docker`
