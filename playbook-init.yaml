@@ -1,9 +1,0 @@
----
-- name: Ensure Raspberry Pi has minimal configuration to execute Ansible playbooks with regular user
-  hosts: all
-  become: true
-  tasks:
-    - name: Ensure `morgan` has an SSH authorized key
-      ansible.posix.authorized_key:
-        user: morgan
-        key: https://raw.githubusercontent.com/nagromc/dotfiles/main/private_dot_ssh/authorized_keys

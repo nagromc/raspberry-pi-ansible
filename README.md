@@ -3,8 +3,6 @@
 - Ansible
 - Vagrant
 - VirtualBox
-- sshpass
-  - `brew install hudochenkov/sshpass/sshpass` on macOS
 
 ## Development
 
@@ -16,13 +14,7 @@ vagrant up
 
 ### Deploying a playbook
 
-First playbook deployment:
-
-```shell
-ansible-playbook --inventory inventory/dev --extra-vars "@init-overrides.json" playbook-init.yaml
-```
-
-Following playbook deployments:
+Run the following command:
 
 ```shell
 ansible-playbook --inventory inventory/dev --ask-become-pass playbook.yaml
@@ -30,23 +22,6 @@ ansible-playbook --inventory inventory/dev --ask-become-pass playbook.yaml
 
 
 ## Production
-
-### Initializing a minimal environment
-
-Copy the content of the `bootfs/` directory to the Raspberry Pi's first partition named `bootfs`:
-
-```shell
-cp bootfs/* /Volumes/bootfs/
-```
-
-
-### Deploying a playbook
-
-First playbook deployment:
-
-```shell
-ansible-playbook --inventory inventory/prod --extra-vars "@init-overrides.json" playbook-init.yaml
-```
 
 Following playbook deployments:
 

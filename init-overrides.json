@@ -1,7 +1,0 @@
-{
-  "ansible_port": "22",
-  "ansible_user": "morgan",
-  "ansible_password": "morgan",
-  "ansible_sudo_pass": "morgan",
-  "ansible_ssh_extra_args": "-o StrictHostKeyChecking=no"
-}
