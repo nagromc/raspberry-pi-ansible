@@ -2,6 +2,9 @@
 - name: Ensure Raspberry Pi is configured
   hosts: all
   become: true
+  vars:
+    servarr_uid: 1042
+    servarr_gid: 1042
   tasks:
     - name: Ensure `pi` user is disabled
       user:
@@ -16,7 +19,7 @@
     - name: Ensure `servarr` group is created
       group:
         name: servarr
-        gid: 1042
+        gid: "{{ servarr_gid }}"
 
     - name: Ensure `servarr` user is created
       user:
@@ -24,7 +27,7 @@
         group: servarr
         password: '!'  # locked password
         shell: /usr/sbin/nologin
-        uid: 1042
+        uid: "{{ servarr_uid }}"
 
     - name: Ensure `sshd` is secured
       copy:
@@ -52,6 +55,14 @@
         update_cache: yes
         cache_valid_time: 86400 # one day
       notify: Reboot system
+
+    - name: Mount volume from NAS
+      mount:
+        src: //mgn-nas.local/video
+        path: /mnt/nas
+        opts: "rw,vers=3,file_mode=0660,dir_mode=0770,uid={{ servarr_uid }},gid={{ servarr_gid }},username={{ smb_user }},password={{ smb_password }}"
+        fstype: cifs
+        state: mounted
 
   handlers:
     - name: Restart sshd

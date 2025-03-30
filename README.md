@@ -23,8 +23,28 @@ ansible-playbook --inventory inventory/dev playbook.yaml
 
 ## Production
 
-Following playbook deployments:
+### Secrets file
+
+- Create a file containing the required secrets changing the desired values:
+
+    ```shell
+    echo 'smb_user: the_user\nsmb_password: the_password' > secrets
+    ```
+
+- Create a file containting the encryption key:
+
+    ```shell
+    echo 'superSecretVaultPassword' > vault-password
+    ```
+
+- Encrypt the file:
+
+    ```shell
+    ansible-vault encrypt --vault-password-file vault-password secrets
+    ```
+
+### Deployment
 
 ```shell
-ansible-playbook --inventory inventory/prod playbook.yaml
+ansible-playbook --inventory inventory/prod --extra-vars @secrets --vault-password-file vault-password playbook.yaml
 ```

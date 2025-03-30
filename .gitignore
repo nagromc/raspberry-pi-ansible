@@ -1,2 +1,4 @@
 .vagrant/
 TODO.md
+secrets
+vault-password
